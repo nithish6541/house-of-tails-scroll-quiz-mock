@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>House of Tails — A profile, piece by piece</title>
+<style>
+:root{--ink:#203e37;--muted:#738078;--blue:#205993;--paper:#fffdf9;--line:#d8dfd5;--ease:cubic-bezier(.22,.8,.25,1)}
+*{box-sizing:border-box}body{margin:0;background:#f6f1e8;color:var(--ink);font:16px/1.5 system-ui,sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:default}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #8aafd0;outline-offset:4px}header{height:84px;display:flex;align-items:center;justify-content:space-between;padding:16px 5vw;border-bottom:1px solid #e4dfd5}header img{width:160px}header span{font-size:12px;color:var(--muted)}h1,h2{font:400 36px/1.15 Georgia,serif;margin:0}h1{font-size:clamp(28px,3vw,42px)}.intro{text-align:center;padding:30px 16px 24px}.intro p{color:var(--muted);margin:10px 0 0}.layout{display:grid;grid-template-columns:240px minmax(0,760px);gap:32px;max-width:1100px;margin:0 auto;padding:0 24px 50px;align-items:start}.rail-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}.tiles{display:grid;gap:7px}.tile{position:relative;display:flex;align-items:center;gap:10px;text-align:left;border:1px solid transparent;border-radius:13px;padding:10px 12px;background:transparent;color:var(--muted);min-height:51px;transition:background .4s,border-color .4s}.tile.current{background:#edece4;border-color:#d1d9cd;color:var(--ink)}.tile.complete{background:#fffdf9;border-color:var(--line);color:var(--ink)}.number{display:grid;place-items:center;width:25px;height:25px;border:1px solid #c9d2c6;border-radius:50%;flex-shrink:0;font-size:11px}.complete .number{background:#dfeee1;color:#356b4c;border-color:#dfeee1}.tile strong{display:block;font-size:12px;font-weight:650}.tile small{display:block;font-size:12px;max-width:162px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tile:not(.complete) small{display:none}.stage{position:relative;min-height:450px}.card{position:relative;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:25px;padding:38px;box-shadow:0 22px 55px #203e370b;transform-origin:top left;will-change:transform,opacity}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--blue);margin:0 0 17px;font-weight:750}.card h2{font-size:clamp(25px,3vw,34px);max-width:590px}.help{color:var(--muted);font-size:14px;margin:14px 0 25px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}.choice{border:1px solid #bdcbbd;border-radius:16px;background:#f0f5ed;padding:22px;color:var(--ink);min-height:78px;transition:transform .2s,box-shadow .2s,background .2s}.choice:nth-child(even){background:#fbede1}.choice:hover{transform:translateY(-3px);box-shadow:0 9px 20px #203e3710}.choice.selected{border:2px solid var(--blue);background:#e7eff8}.species svg{width:120px;height:95px;display:block;margin:auto auto 12px;fill:var(--ink)}.field{display:block;font-size:13px;font-weight:650;margin:20px 0}.field input,.field select{display:block;width:100%;padding:14px;border-radius:10px;border:1px solid #aab9ac;background:white;color:var(--ink);margin-top:8px}.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:28px}.next,.restart{padding:13px 22px;border:0;border-radius:11px;background:var(--blue);color:white;font-weight:700}.back{border:0;background:transparent;color:var(--muted);padding:12px 0}.hint{font-size:12px;color:var(--muted);margin:18px 0 0}.error{color:#9a4133;font-size:13px;min-height:20px;margin:8px 0 0}.paw-stamp{position:absolute;right:8px;top:-14px;width:35px;height:35px;fill:#476f56;pointer-events:none;z-index:5}.progress{height:3px;background:#dedfd3;margin:18px 0 8px;border-radius:8px;overflow:hidden}.progress i{display:block;height:100%;background:#88a889;transition:width .65s var(--ease)}#count{font-size:12px;color:var(--muted)}.review{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;font-size:14px;margin:22px 0}.review dt{color:var(--muted)}.review dd{margin:0}.review-note{padding:16px;background:#edf3ed;border-radius:12px;font-size:14px}.rail-note{font-size:11px;color:var(--muted);margin-top:15px}.footer{font-size:12px;color:var(--muted);text-align:center;padding:10px 20px 25px}button[aria-disabled=true]{cursor:default}
+@media(max-width:760px){header{height:64px}header img{width:125px}.intro{padding:22px 16px}.intro p{font-size:13px}.layout{display:flex;flex-direction:column;padding:0 16px 30px;gap:18px}.rail{width:100%}.rail-title,.rail-note{display:none}.tiles{display:flex;overflow-x:auto;gap:7px;padding:4px 0 8px}.tile{flex:0 0 115px;padding:8px;min-height:58px}.tile small{max-width:68px}.tile strong{font-size:11px}.progress{margin:4px 0}.stage{width:100%;min-height:440px}.card{padding:25px 22px}.species svg{width:85px;height:75px}.choice{padding:15px}.help{font-size:13px}.hint{font-size:11px}.card h2{font-size:27px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.is-intro .rail{visibility:hidden;pointer-events:none}
+.is-intro .stage{transform:translateX(-136px)}
+@media(max-width:760px){.is-intro .rail{display:none}.is-intro .stage{transform:none}}
+</style>
+<header><img src="../house-of-tails-breed-science-theme/assets/house-of-tails-logo-primary-dog-cat-horizontal.svg" alt="House of Tails"><span>Interaction concept</span></header>
+<div class="intro"><h1>A little about your best friend.</h1><p>Watch their profile come together, one answer at a time.</p></div>
+<main class="layout is-intro"><aside class="rail" aria-label="Your answers"><p class="rail-title">Your pet's story</p><nav class="tiles" id="tiles" aria-label="Questions"></nav><div class="progress"><i id="fill"></i></div><span id="count" aria-live="polite"></span><p class="rail-note">Your answers collect here. Select any completed tile to make a change.</p></aside><div class="stage" id="stage"></div></main>
+<p class="footer">Local interaction mock · One pet · Sample questions · No information is sent or saved</p>
+<script>
+const questions=[
+ {key:'species',title:'Pet type',heading:'Who are we getting to know?',help:'Choose your companion to begin their story.',options:['Dog','Cat']},
+ {key:'name',title:'Name',heading:'What should we call them?',help:'Every good story starts with a name.',type:'text',placeholder:'Your pet’s name'},
+ {key:'sex',title:'Sex',heading:'Is {pet} male or female?',help:'A little more about your companion.',options:['Male','Female']},
+ {key:'age',title:'Age',heading:'How old is {pet}?',help:'For this concept, enter their age in years.',type:'number',placeholder:'Age in years'},
+ {key:'breed',title:'Breed',heading:'What breed is {pet}?',help:'This prototype uses a short sample list.',type:'breed'},
+ {key:'weight',title:'Weight',heading:'How much does {pet} weigh?',help:'Enter their weight in pounds for this concept.',type:'number',placeholder:'Weight in lb'},
+ {key:'neutered',title:'Spayed / neutered',heading:'Has {pet} been spayed or neutered?',help:'Choose whichever answer fits.',options:['Yes','No','Not sure']},
+ {key:'body',title:'Body condition',heading:'How would you describe {pet}?',help:'Placeholder choices for the interaction mock; the real quiz uses the body-condition illustrations.',options:['Lean','Ideal','Above ideal']},
+ {key:'conditions',title:'Conditions',heading:'Any diagnosed conditions?',help:'Sample choices only. Select all that apply, then continue.',options:['None','Joint condition','Digestive condition','Other'],multiple:true},
+ {key:'medications',title:'Medications',heading:'Does {pet} take medication?',help:'A short sample for this concept.',options:['No medication','Yes','Not sure']}
+];
+const answers={},stage=document.querySelector('#stage'),tiles=document.querySelector('#tiles');let current=0,busy=false;
+const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const animal=s=>s==='Dog'?'<svg viewBox="0 0 140 100" aria-hidden="true"><path d="M24 44Q7 40 8 22Q17 39 34 34L87 35L92 15L106 7L123 20L135 23L131 36L111 40L103 58L108 88L97 88L87 62L53 65L43 88L32 88L36 56Z"/></svg>':'<svg viewBox="0 0 140 100" aria-hidden="true"><path d="M34 45Q8 34 15 12Q21 0 31 9Q18 8 23 27L44 41L89 40L98 25L100 8L111 20L125 9L125 29L134 37L124 46L110 48L106 89L97 89L94 60L58 62L44 88L34 88L40 57Z"/></svg>';
+function renderRail(){tiles.innerHTML=questions.map((q,i)=>'<button type="button" class="tile '+(answers[q.key]!==undefined?'complete ':'')+(i===current?'current':'')+'" data-go="'+i+'" aria-disabled="'+(answers[q.key]===undefined&&i!==current)+'" '+(i===current?'aria-current="step"':'')+'><span class="number">'+(answers[q.key]!==undefined?'✓':i+1)+'</span><span><strong>'+q.title+'</strong><small>'+escape(answers[q.key]??'')+'</small></span></button>').join('');document.querySelector('#fill').style.width=Object.keys(answers).length/questions.length*100+'%';document.querySelector('#count').textContent=Object.keys(answers).length+' of '+questions.length+' answers collected';}
+function makeCard(index){const el=document.createElement('section');el.className='card';if(index===questions.length){el.innerHTML='<p class="eyebrow">Their story, together</p><h2>'+escape(answers.name||'Your pet')+'’s profile</h2><dl class="review">'+questions.map(q=>'<dt>'+q.title+'</dt><dd>'+escape(answers[q.key])+'</dd>').join('')+'</dl><p class="review-note">You can revisit any answer on the left before finishing.</p><form><label class="field">Email address<input type="email" required placeholder="you@example.com" autocomplete="email"></label><div class="actions"><button type="button" class="back" data-back>← Back</button><button class="next">Finish preview</button></div><p class="hint">This demo does not submit your email or calculate a recommendation.</p></form>';el.querySelector('form').onsubmit=e=>{e.preventDefault();el.querySelector('form').innerHTML='<p class="review-note" role="status">✓ Preview complete. Your pet’s story is ready.</p><button type="button" class="restart">Try again</button>';el.querySelector('.restart').onclick=()=>location.reload();};}
+else{const q=questions[index],value=answers[q.key];let controls='';if(q.options)controls='<div class="choices">'+q.options.map(o=>'<button type="button" class="choice '+(q.key==='species'?'species ':'')+((q.multiple?value?.split(', ').includes(o):value===o)?'selected':'')+'" aria-pressed="'+Boolean(q.multiple?value?.split(', ').includes(o):value===o)+'" data-choice="'+o+'">'+(q.key==='species'?animal(o):'')+o+'</button>').join('')+'</div>';else if(q.type==='breed')controls='<label class="field">Breed<select required><option value="">Choose a breed</option>'+((answers.species==='Cat')?['Persian','Siamese','Domestic shorthair','Mixed / unknown']:['Golden Retriever','Labrador Retriever','Beagle','Mixed / unknown']).map(o=>'<option '+(value===o?'selected':'')+'>'+o+'</option>').join('')+'</select></label>';else controls='<label class="field">'+q.title+'<input required type="'+q.type+'" '+(q.type==='number'?'min="'+(q.key==='weight'?'0.1':'0')+'" max="'+(q.key==='age'?'40':'300')+'" step="0.1"':'maxlength="60"')+' value="'+escape(value??'')+'" placeholder="'+q.placeholder+'"></label>';el.innerHTML='<p class="eyebrow">A profile, piece by piece · '+(index+1)+' / '+questions.length+'</p><h2>'+escape(q.heading.replace('{pet}',answers.name||'your pet'))+'</h2><p class="help">'+q.help+'</p><form>'+controls+'<div class="actions"><button class="back" type="button" data-back '+(index===0?'style="visibility:hidden"':'')+'>← Back</button>'+(!q.options||q.multiple?'<button class="next">Continue →</button>':'<span class="hint">Choose an answer to continue →</span>')+'</div><p class="error" role="status"></p></form>';
+el.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{if(busy)return;if(q.multiple){if(b.dataset.choice==='None')el.querySelectorAll('.selected').forEach(x=>x.classList.remove('selected'));else el.querySelector('[data-choice="None"]').classList.remove('selected');b.classList.toggle('selected');el.querySelectorAll('[data-choice]').forEach(x=>x.setAttribute('aria-pressed',x.classList.contains('selected')));}else{b.classList.add('selected');b.setAttribute('aria-pressed','true');advance(b.dataset.choice);}});el.querySelector('form').onsubmit=e=>{e.preventDefault();if(busy)return;const v=q.multiple?Array.from(el.querySelectorAll('.selected')).map(b=>b.dataset.choice).join(', '):el.querySelector('input,select').value.trim();if(!v){el.querySelector('.error').textContent='Choose or enter an answer to continue.';return;}advance(v);};}el.querySelector('[data-back]')?.addEventListener('click',()=>navigate(Math.max(0,current-1)));return el;}
+async function move(next,dock){
+  if(busy)return;
+  busy=true;
+  const old=stage.firstElementChild;
+  old.inert=true;
+  const start=old.getBoundingClientRect();
+  const layout=document.querySelector('.layout');
+  const first=layout.classList.contains('is-intro');
+  layout.classList.remove('is-intro');
+  const incoming=makeCard(next);
+  incoming.style.visibility='hidden';
+  incoming.style.position='absolute';
+  incoming.style.top='0';
+  stage.append(incoming);
+  const targetHeight=incoming.getBoundingClientRect().height;
+  stage.style.minHeight=Math.max(start.height,targetHeight)+'px';
+  current=next;
+  renderRail();
+  const tile=dock===undefined?null:tiles.children[dock];
+  const end=tile?.getBoundingClientRect();
+  if(!reduced()){
+    // Keep a solid, viewport-positioned copy above both destinations.
+    // Its outline travels all the way to the tile before the handoff.
+    const flying=old.cloneNode(true);
+    flying.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+    flying.inert=true;
+    flying.setAttribute('aria-hidden','true');
+    Object.assign(flying.style,{
+      position:'fixed',left:start.left+'px',top:start.top+'px',
+      width:start.width+'px',height:start.height+'px',margin:'0',
+      zIndex:'100',overflow:'hidden',pointerEvents:'none',transformOrigin:'top left'
+    });
+    document.body.append(flying);
+    old.style.visibility='hidden';
+    if(tile)tile.style.visibility='hidden';
+    if(first)document.querySelector('.rail').animate(
+      [{opacity:0},{opacity:1}],
+      {duration:500,delay:220,fill:'both'}
+    );
+    incoming.style.visibility='';
+    const travel=end
+      ? flying.animate([
+          {transform:'none',opacity:1},
+          {transform:'translate('+(end.left-start.left)+'px,'+(end.top-start.top)+'px) scale('+(end.width/start.width)+','+(end.height/start.height)+')',opacity:1}
+        ],{duration:900,easing:'cubic-bezier(.45,0,.2,1)',fill:'forwards'})
+      : flying.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateX(30px)'}],
+        {duration:450,easing:'ease-in-out',fill:'forwards'});
+    const entry=incoming.animate([
+      {opacity:0,transform:'translateX(40px) scale(.98)'},
+      {opacity:1,transform:'none'}
+    ],{duration:650,delay:end?340:120,easing:'cubic-bezier(.22,.8,.25,1)',fill:'both'});
+    await travel.finished;
+    if(tile){
+      tile.style.visibility='';
+      // Crossfade only after the moving card occupies the tile's exact bounds.
+      await Promise.all([
+        flying.animate([{opacity:1},{opacity:0}],{duration:140,fill:'forwards'}).finished,
+        tile.animate([{opacity:0},{opacity:1}],{duration:140,fill:'both'}).finished
+      ]);
+      const paw=document.createElementNS('http://www.w3.org/2000/svg','svg');
+      paw.classList.add('paw-stamp');paw.setAttribute('viewBox','0 0 40 40');
+      paw.innerHTML='<ellipse cx="20" cy="27" rx="11" ry="8"/><ellipse cx="7" cy="17" rx="4" ry="6"/><ellipse cx="15" cy="9" rx="4" ry="6"/><ellipse cx="25" cy="9" rx="4" ry="6"/><ellipse cx="33" cy="17" rx="4" ry="6"/>';
+      tile.append(paw);
+      paw.animate([{opacity:0,transform:'translateY(-12px)'},{opacity:1,transform:'translateY(3px)',offset:.4},{opacity:0,transform:'translateY(-4px)'}],{duration:600}).finished.then(()=>paw.remove());
+    }
+    flying.remove();
+    await entry.finished;
+  }else incoming.style.visibility='';
+  old.remove();
+  incoming.style.position='relative';
+  incoming.style.top='';
+  stage.style.minHeight=targetHeight+'px';
+  busy=false;
+}
+function advance(value){const index=current,q=questions[index];if(q.key==='species'&&answers.species&&answers.species!==value)delete answers.breed;answers[q.key]=value;const missing=questions.findIndex((item,i)=>i>index&&answers[item.key]===undefined);move(missing<0?questions.length:missing,index);}
+function navigate(i){if(!busy&&(answers[questions[i]?.key]!==undefined||i===current))move(i);}
+tiles.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)navigate(Number(b.dataset.go));});renderRail();stage.append(makeCard(0));
+</script>
+</html>
