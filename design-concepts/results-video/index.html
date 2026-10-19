@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>House of Tails · Results & thank-you concept</title>
+  <link rel="stylesheet" href="./mock.css">
+  <script src="./mock.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#results">Skip to results</a>
+  <div class="preview-bar"><span>Design concept · sample profiles · nothing is saved</span>
+    <label>Preview household <select id="household"><option value="dog">Dog</option><option value="cat">Cat</option><option value="both">Dog & cat</option></select></label>
+  </div>
+  <header class="masthead"><span>For the long run</span><img src="./wordmark.png" width="5491" height="1160" alt="House of Tails"><span>A little closer to understanding them</span></header>
+  <main id="results">
+    <div class="intro"><span class="eyebrow"><span aria-hidden="true">✓</span> A little more understood</span><h1>A good start to their<br><em>long run.</em></h1><p id="intro-copy">Buddy’s profile is complete. Here’s what comes next.</p></div>
+    <div class="results-layout">
+      <aside class="video-card" aria-labelledby="video-heading">
+        <div class="section-label">A personal note</div>
+        <h2 id="video-heading">Thank you,<br>from Dr. Loenser</h2>
+        <p id="audience">For Buddy’s dog parent</p>
+        <div class="species-tabs" role="tablist" aria-label="Choose a thank-you message" hidden>
+          <button type="button" role="tab" id="tab-dog" aria-controls="video-panel" aria-selected="true" tabindex="0" data-species="dog">For dog parents</button>
+          <button type="button" role="tab" id="tab-cat" aria-controls="video-panel" aria-selected="false" tabindex="-1" data-species="cat">For cat parents</button>
+        </div>
+        <div id="video-panel" role="region" aria-labelledby="video-heading">
+          <div class="video-frame">
+            <video id="thank-you-video" tabindex="0" controls playsinline preload="none" poster="./poster.jpg" aria-label="Supplied reference clip, not the final thank-you video"><source src="./reference.mp4" type="video/mp4"></video>
+            <button type="button" class="play-cover" id="play-video" aria-label="Play supplied reference clip"><span class="play-icon" aria-hidden="true">▶</span><span>Play reference clip <small>0:34 · sound on</small></span></button>
+            <span class="reference-label">Reference clip</span>
+          </div>
+          <p id="video-status" class="video-status" role="status" aria-live="polite"></p>
+        </div>
+        <p class="design-note">Placement preview only. The final dog and cat messages, with captions, will replace this supplied reference clip.</p>
+        <p class="watch-note">Watch whenever you like. Your results are already here.</p>
+      </aside>
+      <section class="profile-card" aria-labelledby="profile-heading">
+        <div class="profile-top"><div><span class="section-label">Their little story</span><h2 id="profile-heading">Meet Buddy.</h2><p id="profile-subtitle">Golden Retriever · Dog</p></div><div class="pet-art"><img id="pet-art" src="./dog.png" alt="" width="110" height="110"></div></div>
+        <dl class="profile-facts"><div><dt>Age</dt><dd id="pet-age">4 years</dd></div><div><dt>Weight</dt><dd id="pet-weight">28 kg</dd></div><div><dt>Profile</dt><dd><span class="complete-dot" aria-hidden="true"></span>Complete</dd></div></dl>
+        <div class="result-preview"><div class="section-label">Your supplement preview</div><h3>A little guidance.<br>A longer journey.</h3><p>The quiz’s existing supplement result and its explanation would appear here, alongside this message.</p><p class="result-disclaimer">Layout placeholder—not a calculated recommendation. This concept does not change the recommendation engine or estimate physiological age.</p></div>
+        <details id="answer-review"><summary><span aria-hidden="true">✎</span> Review their answers <span class="chevron" aria-hidden="true">⌄</span></summary><div class="review-inner"><dl><div><dt>Name</dt><dd id="review-name">Buddy</dd></div><div><dt>Species</dt><dd id="review-species">Dog</dd></div><div><dt>Breed</dt><dd id="review-breed">Golden Retriever</dd></div></dl><p>Sample answers for this design concept. Editing the real quiz is not connected.</p></div></details>
+        <div class="profile-footer"><span aria-hidden="true">♡</span><p>One small step today.<br>More good days together.</p></div>
+      </section>
+    </div>
+  </main>
+  <footer>House of Tails <span>For the long run.</span></footer>
+</body>
+</html>
