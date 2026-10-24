@@ -10,20 +10,43 @@
 </head>
 <body>
   <a class="skip" href="#results">Skip to results</a>
-  <div class="preview-bar"><span>Design concept · sample profiles · nothing is saved</span>
-    <label>Preview household <select id="household"><option value="dog">Dog</option><option value="cat" selected>Cat</option><option value="both">Dog & cat</option></select></label>
-  </div>
-  <header class="masthead"><span>For the long run</span><img src="./wordmark.png" width="5491" height="1160" alt="House of Tails"><span>A little closer to understanding them</span></header>
+  <header class="masthead">
+    <img src="./wordmark.png" width="5491" height="1160" alt="House of Tails">
+    <div class="preview-controls"><span class="preview-label">Design concept</span><label><span class="household-label">Preview household</span><select id="household"><option value="dog">Dog</option><option value="cat" selected>Cat</option><option value="both">Dog & cat</option></select></label></div>
+  </header>
   <main id="results">
-    <div class="intro"><span class="eyebrow"><span aria-hidden="true">✓</span> A little more understood</span><h1>A good start to their<br><em>long run.</em></h1><p id="intro-copy">Cleo’s profile is complete. Here’s what comes next.</p></div>
+    <h1 class="sr-only">Your pet’s results</h1>
     <div class="results-layout">
+      <section class="profile-card" aria-labelledby="profile-heading">
+        <div class="profile-top">
+          <div><h2 id="profile-heading">Cleo</h2><p class="profile-meta"><span id="profile-subtitle">Domestic Shorthair · Cat</span><span aria-hidden="true"> · </span><span id="pet-age">3 years</span></p></div>
+          <div class="pet-art"><img id="pet-art" src="./cat.png" alt="" width="64" height="64"></div>
+        </div>
+        <section class="life-stage-card" id="life-stage-card" aria-labelledby="life-stage-heading">
+          <p class="section-label">Your life stage</p>
+          <h3 id="life-stage-heading"><span id="life-stage-label" role="status" aria-live="polite" aria-atomic="true">Young adult</span></h3>
+          <p id="life-stage-description">An adult chapter, with routines that can grow around your cat’s individual needs.</p>
+          <ol class="life-stage-trail" aria-label="Cat life stages">
+            <li id="stage-kitten">Kitten</li><li id="stage-young" aria-current="step">Young adult</li><li id="stage-mature">Mature adult</li><li id="stage-senior">Senior</li>
+          </ol>
+        </section>
+        <p id="dog-stage-note" class="dog-stage-note" hidden>Dog life-stage results will be added once the breed-based approach is confirmed.</p>
+        <div id="cat-example-control" class="cat-examples" role="group" aria-labelledby="cat-examples-heading">
+          <p id="cat-examples-heading" class="section-label">Try another cat example</p>
+          <div class="example-grid">
+            <button type="button" class="example-tile" data-cat-example="kitten" aria-pressed="false" aria-controls="life-stage-card"><strong>Miso</strong><span class="example-check" aria-hidden="true">✓</span><small>8 months<span class="sr-only"> · Kitten</span></small></button>
+            <button type="button" class="example-tile" data-cat-example="young" aria-pressed="true" aria-controls="life-stage-card"><strong>Cleo</strong><span class="example-check" aria-hidden="true">✓</span><small>3 years<span class="sr-only"> · Young adult</span></small></button>
+            <button type="button" class="example-tile" data-cat-example="mature" aria-pressed="false" aria-controls="life-stage-card"><strong>Luna</strong><span class="example-check" aria-hidden="true">✓</span><small>8 years<span class="sr-only"> · Mature adult</span></small></button>
+            <button type="button" class="example-tile" data-cat-example="senior" aria-pressed="false" aria-controls="life-stage-card"><strong>Olive</strong><span class="example-check" aria-hidden="true">✓</span><small>12 years<span class="sr-only"> · Senior</span></small></button>
+          </div>
+        </div>
+      </section>
       <aside class="video-card" aria-labelledby="video-heading">
-        <div class="section-label">A personal note</div>
-        <h2 id="video-heading">Thank you,<br>from Dr. Loenser</h2>
+        <h2 id="video-heading">A note from Dr. Loenser</h2>
         <p id="audience">For Cleo’s cat parent</p>
         <div class="species-tabs" role="tablist" aria-label="Choose a thank-you message" hidden>
-          <button type="button" role="tab" id="tab-dog" aria-controls="video-panel" aria-selected="true" tabindex="0" data-species="dog">For dog parents</button>
-          <button type="button" role="tab" id="tab-cat" aria-controls="video-panel" aria-selected="false" tabindex="-1" data-species="cat">For cat parents</button>
+          <button type="button" role="tab" id="tab-dog" aria-controls="video-panel" aria-selected="true" tabindex="0" data-species="dog">Dog parents</button>
+          <button type="button" role="tab" id="tab-cat" aria-controls="video-panel" aria-selected="false" tabindex="-1" data-species="cat">Cat parents</button>
         </div>
         <div id="video-panel" role="region" aria-labelledby="video-heading">
           <div class="video-frame">
@@ -33,39 +56,24 @@
           </div>
           <p id="video-status" class="video-status" role="status" aria-live="polite"></p>
         </div>
-        <p class="design-note">Placement preview only. The final dog and cat messages, with captions, will replace this supplied reference clip.</p>
-        <p class="watch-note">Watch whenever you like. Your results are already here.</p>
+        <p class="design-note">Reference video only. Final dog and cat messages with captions will replace this clip.</p>
       </aside>
-      <section class="profile-card" aria-labelledby="profile-heading">
-        <div class="profile-top"><div><span class="section-label">Their little story</span><h2 id="profile-heading">Meet Cleo.</h2><p id="profile-subtitle">Domestic Shorthair · Cat</p></div><div class="pet-art"><img id="pet-art" src="./cat.png" alt="" width="110" height="110"></div></div>
-        <dl class="profile-facts"><div><dt>Age</dt><dd id="pet-age">3 years</dd></div><div><dt>Weight</dt><dd id="pet-weight">4 kg</dd></div><div><dt>Profile</dt><dd><span class="complete-dot" aria-hidden="true"></span>Complete</dd></div></dl>
-        <div id="cat-example-control" class="cat-examples" role="group" aria-labelledby="cat-examples-heading">
-          <p id="cat-examples-heading" class="section-label">Explore a cat’s life stage</p>
-          <p class="example-hint">Choose an example to see their result below.</p>
-          <div class="example-grid">
-            <button type="button" class="example-tile" data-cat-example="kitten" aria-pressed="false" aria-controls="life-stage-card"><strong>Miso</strong><span class="example-check" aria-hidden="true">✓</span><span>Kitten</span><small>8 months</small></button>
-            <button type="button" class="example-tile" data-cat-example="young" aria-pressed="true" aria-controls="life-stage-card"><strong>Cleo</strong><span class="example-check" aria-hidden="true">✓</span><span>Young adult</span><small>3 years</small></button>
-            <button type="button" class="example-tile" data-cat-example="mature" aria-pressed="false" aria-controls="life-stage-card"><strong>Luna</strong><span class="example-check" aria-hidden="true">✓</span><span>Mature adult</span><small>8 years</small></button>
-            <button type="button" class="example-tile" data-cat-example="senior" aria-pressed="false" aria-controls="life-stage-card"><strong>Olive</strong><span class="example-check" aria-hidden="true">✓</span><span>Senior</span><small>12 years</small></button>
-          </div>
-        </div>
-        <section class="life-stage-card" id="life-stage-card" aria-labelledby="life-stage-heading">
-          <div class="section-label">Their chapter of life</div>
-          <h3 id="life-stage-heading">Life stage: <span id="life-stage-label" role="status" aria-live="polite" aria-atomic="true">Young adult</span></h3>
-          <p id="life-stage-description">An adult chapter, with routines that can grow around your cat’s individual needs.</p>
-          <ol class="life-stage-trail" aria-label="Cat life stages">
-            <li id="stage-kitten">Kitten</li><li id="stage-young" aria-current="step">Young adult</li><li id="stage-mature">Mature adult</li><li id="stage-senior">Senior</li>
-          </ol>
-          <p class="life-stage-note">Based on their age and the 2021 AAHA/AAFP feline guidelines. Life stage is not a biological-age test or a prediction of lifespan.</p>
-          <a class="source-link" href="https://www.aaha.org/wp-content/uploads/2021/02/2021-aaha-aafp-feline-life-stage-guidelines.pdf" target="_blank" rel="noopener noreferrer">Read the feline life-stage guidelines <span class="sr-only">(PDF, opens in a new tab)</span></a>
-        </section>
-        <p id="dog-stage-note" class="dog-stage-note" hidden>Dog life-stage results will be added once the breed-based approach is confirmed.</p>
-        <div class="result-preview"><div class="section-label">Your supplement preview</div><h3>A little guidance.<br>A longer journey.</h3><p>The quiz’s existing supplement result and its explanation would appear here, alongside this message.</p><p class="result-disclaimer">Layout placeholder—not a calculated recommendation. This concept does not change the recommendation engine or estimate physiological age.</p></div>
-        <details id="answer-review"><summary><span aria-hidden="true">✎</span> Review their answers <span class="chevron" aria-hidden="true">⌄</span></summary><div class="review-inner"><dl><div><dt>Name</dt><dd id="review-name">Cleo</dd></div><div><dt>Species</dt><dd id="review-species">Cat</dd></div><div><dt>Age</dt><dd id="review-age">3 years</dd></div><div><dt>Breed</dt><dd id="review-breed">Domestic Shorthair</dd></div></dl><p>Sample answers for this design concept. Editing the real quiz is not connected.</p></div></details>
-        <div class="profile-footer"><span aria-hidden="true">♡</span><p>One small step today.<br>More good days together.</p></div>
-      </section>
+    </div>
+    <div class="supporting-details">
+      <details id="answer-review">
+        <summary>Review their answers <span class="chevron" aria-hidden="true">⌄</span></summary>
+        <div class="review-inner"><dl><div><dt>Name</dt><dd id="review-name">Cleo</dd></div><div><dt>Species</dt><dd id="review-species">Cat</dd></div><div><dt>Age</dt><dd id="review-age">3 years</dd></div><div><dt>Breed</dt><dd id="review-breed">Domestic Shorthair</dd></div><div><dt>Weight</dt><dd id="review-weight">4 kg</dd></div></dl><p>Sample answers for this design concept. Editing the real quiz is not connected.</p></div>
+      </details>
+      <details id="stage-about">
+        <summary>About these life stages <span class="chevron" aria-hidden="true">⌄</span></summary>
+        <div class="review-inner"><p>Cat life stages are based on age and the 2021 AAHA/AAFP feline guidelines. Life stage is not a biological-age test or a prediction of lifespan. Dog life-stage calculation is not included in this mock.</p><a class="source-link" href="https://www.aaha.org/wp-content/uploads/2021/02/2021-aaha-aafp-feline-life-stage-guidelines.pdf" target="_blank" rel="noopener noreferrer">Read the feline life-stage guidelines <span class="sr-only">(PDF, opens in a new tab)</span></a></div>
+      </details>
+      <details id="supplement-preview">
+        <summary>Supplement result <span class="detail-label">Layout placeholder</span><span class="chevron" aria-hidden="true">⌄</span></summary>
+        <div class="review-inner"><p>The quiz’s existing supplement result and explanation would appear here. This is not a calculated recommendation; the mock does not change the recommendation engine or estimate physiological age.</p></div>
+      </details>
     </div>
   </main>
-  <footer>House of Tails <span>For the long run.</span></footer>
+  <footer>Design review · sample profiles · nothing is saved</footer>
 </body>
 </html>

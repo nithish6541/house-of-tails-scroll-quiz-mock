@@ -9,8 +9,14 @@ video and a separate supplement-result placeholder. Dog life-stage calculation
 is not included yet. Nothing is submitted or saved, and there is no supplement
 recommendation calculation or physiological-age estimate.
 
-Four selectable example tiles sit within the results card, immediately above
-life stage. The selected tile uses the wine highlight and a checkmark. The
+The compact header leads directly to the life-stage answer, without a marketing
+hero or large separate profile introduction. The result is first/left on desktop
+and comes before the video on mobile. The portrait player is viewport-bounded
+without cropping. Answers, source notes and supplement placeholder are collapsed
+below the main content, with smooth disclosures and keyboard access.
+
+Four compact example chips sit within the results card after the life-stage
+answer and trail. The selected chip uses the wine highlight and a checkmark. The
 controls support keyboard activation and stay still while the result changes;
 switching examples does not interrupt a playing video. Reduced motion is respected.
 

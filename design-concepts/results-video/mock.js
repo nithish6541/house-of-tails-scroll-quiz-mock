@@ -53,12 +53,11 @@ function selectSpecies(species, animate = true, lifeOnly = false) {
     tab.tabIndex = selected ? 0 : -1;
   }
   const text = (id, value) => { document.getElementById(id).textContent = value; };
-  text('intro-copy', both ? `Buddy and ${sample.name}’s profiles are complete. A little guidance for each of them.` : `${pet.name}’s profile is complete. Here’s what comes next.`);
   text('audience', `For ${pet.name}’s ${species} parent`);
-  text('profile-heading', `Meet ${pet.name}.`);
+  text('profile-heading', pet.name);
   text('profile-subtitle', `${pet.breed} · ${pet.species}`);
   text('pet-age', pet.age);
-  text('pet-weight', pet.weight);
+  text('review-weight', pet.weight);
   text('review-name', pet.name);
   text('review-species', pet.species);
   text('review-age', pet.age);
@@ -111,28 +110,30 @@ video.addEventListener('error', () => { play.hidden = false; status.textContent 
 document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); });
 
 // Animate the actual disclosure height, rather than fading an already-open box.
-const review = document.querySelector('#answer-review');
-const summary = review.querySelector('summary');
-let disclosureAnimation;
-let expanded = review.open;
-summary.addEventListener('click', event => {
-  event.preventDefault();
-  const start = review.getBoundingClientRect().height;
-  disclosureAnimation?.cancel();
-  expanded = !expanded;
-  if (reduced()) { review.open = expanded; review.style.height = ''; review.style.overflow = ''; return; }
-  review.open = true;
-  review.style.height = '';
-  const end = expanded ? review.getBoundingClientRect().height : summary.getBoundingClientRect().height;
-  review.style.overflow = 'hidden';
-  const animation = review.animate([{ height: `${start}px` }, { height: `${end}px` }], { duration: 340, easing: 'cubic-bezier(.22,1,.36,1)' });
-  disclosureAnimation = animation;
-  animation.onfinish = () => {
-    if (disclosureAnimation !== animation) return;
-    review.open = expanded;
+function wireDisclosure(review) {
+  const summary = review.querySelector('summary');
+  let disclosureAnimation;
+  let expanded = review.open;
+  summary.addEventListener('click', event => {
+    event.preventDefault();
+    const start = review.getBoundingClientRect().height;
+    disclosureAnimation?.cancel();
+    expanded = !expanded;
+    if (reduced()) { review.open = expanded; review.style.height = ''; review.style.overflow = ''; return; }
+    review.open = true;
     review.style.height = '';
-    review.style.overflow = '';
-    disclosureAnimation = null;
-  };
-});
+    const end = expanded ? review.getBoundingClientRect().height : summary.getBoundingClientRect().height;
+    review.style.overflow = 'hidden';
+    const animation = review.animate([{ height: `${start}px` }, { height: `${end}px` }], { duration: 340, easing: 'cubic-bezier(.22,1,.36,1)' });
+    disclosureAnimation = animation;
+    animation.onfinish = () => {
+      if (disclosureAnimation !== animation) return;
+      review.open = expanded;
+      review.style.height = '';
+      review.style.overflow = '';
+      disclosureAnimation = null;
+    };
+  });
+}
+for (const id of ['#answer-review', '#stage-about', '#supplement-preview']) wireDisclosure(document.querySelector(id));
 selectSpecies('cat', false);
