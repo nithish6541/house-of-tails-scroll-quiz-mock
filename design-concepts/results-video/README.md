@@ -16,6 +16,8 @@ hero or large separate profile introduction. The result is first/left on desktop
 and comes before the video on mobile. The portrait player is viewport-bounded
 without cropping. Answers, source notes and supplement placeholder are collapsed
 below the main content, with smooth disclosures and keyboard access.
+The video heading keeps “Dr. Loenser” together beneath “A note from”. Its 9:16
+player has roughly 30% larger responsive size limits, capped to the card width.
 
 Four compact example chips sit within the results card after the life-stage
 answer and trail. The selected chip uses the wine highlight and a checkmark. The
