@@ -1,5 +1,6 @@
 'use strict';
-const household = document.querySelector('#household');
+const householdInputs = [...document.querySelectorAll('[data-household]')];
+let selectedHousehold = 'cat';
 const video = document.querySelector('#thank-you-video');
 const play = document.querySelector('#play-video');
 const status = document.querySelector('#video-status');
@@ -42,7 +43,7 @@ function selectSpecies(species, animate = true, lifeOnly = false) {
   document.querySelector('#cat-example-control').hidden = species !== 'cat';
   document.querySelector('#life-stage-card').hidden = !result;
   document.querySelector('#dog-stage-note').hidden = species !== 'dog';
-  const both = household.value === 'both';
+  const both = selectedHousehold === 'both';
   document.querySelector('.species-tabs').hidden = !both;
   const panel = document.querySelector('#video-panel');
   panel.setAttribute('role', both ? 'tabpanel' : 'region');
@@ -77,7 +78,12 @@ function selectSpecies(species, animate = true, lifeOnly = false) {
     { duration: 280, easing: 'cubic-bezier(.22,1,.36,1)' },
   );
 }
-household.addEventListener('change', () => selectSpecies(household.value === 'cat' ? 'cat' : 'dog'));
+for (const input of householdInputs) input.addEventListener('change', () => {
+  if (!input.checked || !['dog', 'cat', 'both'].includes(input.value) || input.value === selectedHousehold) return;
+  selectedHousehold = input.value;
+  for (const option of householdInputs) option.checked = option.value === selectedHousehold;
+  selectSpecies(selectedHousehold === 'cat' ? 'cat' : 'dog');
+});
 for (const button of exampleButtons) button.addEventListener('click', () => {
   const example = button.dataset.catExample;
   if (activeSpecies !== 'cat' || example === selectedExample || !catSamples[example]) return;

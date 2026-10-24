@@ -4,15 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>House of Tails · Life stage, results & thank-you</title>
-  <link rel="stylesheet" href="./mock.css">
-  <script src="./life-stage.js" defer></script>
-  <script src="./mock.js" defer></script>
+  <link rel="stylesheet" href="./mock.css?v=8270669b9497">
+  <script src="./life-stage.js?v=2d7c98d7614c" defer></script>
+  <script src="./mock.js?v=2713f8d26ee4" defer></script>
 </head>
 <body>
   <a class="skip" href="#results">Skip to results</a>
   <header class="masthead">
     <img src="./wordmark.png" width="5491" height="1160" alt="House of Tails">
-    <div class="preview-controls"><span class="preview-label">Design concept</span><label><span class="household-label">Preview household</span><select id="household"><option value="dog">Dog</option><option value="cat" selected>Cat</option><option value="both">Dog & cat</option></select></label></div>
+    <div class="preview-controls"><span class="preview-label">Design concept</span>
+      <fieldset class="household-switch"><legend class="sr-only">Preview household</legend>
+        <label class="household-option"><input type="radio" name="household" value="dog" data-household><span>Dog</span></label>
+        <label class="household-option"><input type="radio" name="household" value="cat" data-household checked><span>Cat</span></label>
+        <label class="household-option"><input type="radio" name="household" value="both" data-household><span>Both</span></label>
+      </fieldset>
+    </div>
   </header>
   <main id="results">
     <h1 class="sr-only">Your pet’s results</h1>

@@ -2,8 +2,10 @@
 
 Review: https://nithish6541.github.io/house-of-tails-scroll-quiz-mock/design-concepts/results-video/
 
-Combined end-of-quiz design review using fictional dog/cat profiles. Select Dog,
-Cat, or Dog & Cat at the top. Cat examples show Kitten (8 months), Young adult
+Combined end-of-quiz design review using fictional dog/cat profiles. Use the
+branded Dog / Cat / Both segmented radio control in the header. Native radios
+retain standard keyboard navigation, a group label and visible focus. There is
+no household dropdown. Cat examples show Kitten (8 months), Young adult
 (3 years), Mature adult (8 years) and Senior (12 years) alongside the thank-you
 video and a separate supplement-result placeholder. Dog life-stage calculation
 is not included yet. Nothing is submitted or saved, and there is no supplement
@@ -36,3 +38,5 @@ This directory is a self-contained export of the approved local concept. Brand
 artwork is client-supplied. Bodoni Moda fonts are distributed with their SIL Open
 Font License in `bodoni-OFL.txt`. No live quiz settings or customer records are
 included. The existing scroll-quiz mock is unchanged.
+CSS/JS links include content-hash versions to prevent a refreshed page from
+mixing new markup with cached styles/scripts.
