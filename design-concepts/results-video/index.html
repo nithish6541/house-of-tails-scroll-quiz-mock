@@ -11,8 +11,7 @@
 <body>
   <a class="skip" href="#results">Skip to results</a>
   <div class="preview-bar"><span>Design concept · sample profiles · nothing is saved</span>
-    <div class="preview-controls"><label>Preview household <select id="household"><option value="dog">Dog</option><option value="cat" selected>Cat</option><option value="both">Dog & cat</option></select></label>
-    <label id="cat-example-control">Cat example <select id="cat-example"><option value="kitten">Miso · 8 months</option><option value="young" selected>Cleo · 3 years</option><option value="mature">Luna · 8 years</option><option value="senior">Olive · 12 years</option></select></label></div>
+    <label>Preview household <select id="household"><option value="dog">Dog</option><option value="cat" selected>Cat</option><option value="both">Dog & cat</option></select></label>
   </div>
   <header class="masthead"><span>For the long run</span><img src="./wordmark.png" width="5491" height="1160" alt="House of Tails"><span>A little closer to understanding them</span></header>
   <main id="results">
@@ -40,6 +39,16 @@
       <section class="profile-card" aria-labelledby="profile-heading">
         <div class="profile-top"><div><span class="section-label">Their little story</span><h2 id="profile-heading">Meet Cleo.</h2><p id="profile-subtitle">Domestic Shorthair · Cat</p></div><div class="pet-art"><img id="pet-art" src="./cat.png" alt="" width="110" height="110"></div></div>
         <dl class="profile-facts"><div><dt>Age</dt><dd id="pet-age">3 years</dd></div><div><dt>Weight</dt><dd id="pet-weight">4 kg</dd></div><div><dt>Profile</dt><dd><span class="complete-dot" aria-hidden="true"></span>Complete</dd></div></dl>
+        <div id="cat-example-control" class="cat-examples" role="group" aria-labelledby="cat-examples-heading">
+          <p id="cat-examples-heading" class="section-label">Explore a cat’s life stage</p>
+          <p class="example-hint">Choose an example to see their result below.</p>
+          <div class="example-grid">
+            <button type="button" class="example-tile" data-cat-example="kitten" aria-pressed="false" aria-controls="life-stage-card"><strong>Miso</strong><span class="example-check" aria-hidden="true">✓</span><span>Kitten</span><small>8 months</small></button>
+            <button type="button" class="example-tile" data-cat-example="young" aria-pressed="true" aria-controls="life-stage-card"><strong>Cleo</strong><span class="example-check" aria-hidden="true">✓</span><span>Young adult</span><small>3 years</small></button>
+            <button type="button" class="example-tile" data-cat-example="mature" aria-pressed="false" aria-controls="life-stage-card"><strong>Luna</strong><span class="example-check" aria-hidden="true">✓</span><span>Mature adult</span><small>8 years</small></button>
+            <button type="button" class="example-tile" data-cat-example="senior" aria-pressed="false" aria-controls="life-stage-card"><strong>Olive</strong><span class="example-check" aria-hidden="true">✓</span><span>Senior</span><small>12 years</small></button>
+          </div>
+        </div>
         <section class="life-stage-card" id="life-stage-card" aria-labelledby="life-stage-heading">
           <div class="section-label">Their chapter of life</div>
           <h3 id="life-stage-heading">Life stage: <span id="life-stage-label" role="status" aria-live="polite" aria-atomic="true">Young adult</span></h3>

@@ -4,7 +4,8 @@ const video = document.querySelector('#thank-you-video');
 const play = document.querySelector('#play-video');
 const status = document.querySelector('#video-status');
 const tabs = [...document.querySelectorAll('[role=tab]')];
-const catExample = document.querySelector('#cat-example');
+const exampleButtons = [...document.querySelectorAll('[data-cat-example]')];
+let selectedExample = 'young';
 const feline = globalThis.FelineLifeStage;
 const catSamples = {
   kitten: { name: 'Miso', years: 0, months: 8 },
@@ -19,13 +20,20 @@ const profiles = {
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 let panelAnimation;
 let activeSpecies;
-function selectSpecies(species, animate = true) {
+function selectSpecies(species, animate = true, lifeOnly = false) {
+  const changingSpecies = activeSpecies !== species;
   activeSpecies = species;
-  video.pause(); // Never leave the previous message playing behind another pet.
-  try { video.currentTime = 0; } catch (_) { /* Metadata may not be loaded yet. */ }
-  play.hidden = false;
-  status.textContent = '';
-  const sample = catSamples[catExample.value] || catSamples.young;
+  if (changingSpecies) {
+    video.pause(); // Never leave the previous message playing behind another species.
+    try { video.currentTime = 0; } catch (_) { /* Metadata may not be loaded yet. */ }
+    play.hidden = false;
+    status.textContent = '';
+  }
+  const animationTarget = document.querySelector(lifeOnly ? '#life-stage-card' : '.profile-card');
+  const startHeight = animationTarget.getBoundingClientRect().height;
+  panelAnimation?.cancel();
+  const sample = catSamples[selectedExample];
+  for (const button of exampleButtons) button.setAttribute('aria-pressed', String(button.dataset.catExample === selectedExample));
   const pet = species === 'cat'
     ? { ...profiles.cat, ...sample, age: feline.formatAge(sample.years, sample.months) }
     : profiles.dog;
@@ -63,14 +71,20 @@ function selectSpecies(species, animate = true) {
       .setAttribute('aria-current', item.id === result.stage ? 'step' : 'false');
   }
   document.getElementById('pet-art').src = `./${species}.png`;
-  panelAnimation?.cancel();
-  if (animate && !reduced()) panelAnimation = document.querySelector('.profile-card').animate(
-    [{ transform: 'translateY(5px)', opacity: .7 }, { transform: 'none', opacity: 1 }],
+  if (animate && !reduced()) panelAnimation = animationTarget.animate(
+    lifeOnly
+      ? [{ height: `${startHeight}px`, opacity: .85 }, { height: `${animationTarget.getBoundingClientRect().height}px`, opacity: 1 }]
+      : [{ transform: 'translateY(5px)', opacity: .7 }, { transform: 'none', opacity: 1 }],
     { duration: 280, easing: 'cubic-bezier(.22,1,.36,1)' },
   );
 }
 household.addEventListener('change', () => selectSpecies(household.value === 'cat' ? 'cat' : 'dog'));
-catExample.addEventListener('change', () => selectSpecies(activeSpecies));
+for (const button of exampleButtons) button.addEventListener('click', () => {
+  const example = button.dataset.catExample;
+  if (activeSpecies !== 'cat' || example === selectedExample || !catSamples[example]) return;
+  selectedExample = example;
+  selectSpecies('cat', true, true);
+});
 for (const tab of tabs) {
   tab.addEventListener('click', () => selectSpecies(tab.dataset.species));
   tab.addEventListener('keydown', event => {

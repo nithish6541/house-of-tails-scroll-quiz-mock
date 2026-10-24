@@ -9,6 +9,11 @@ video and a separate supplement-result placeholder. Dog life-stage calculation
 is not included yet. Nothing is submitted or saved, and there is no supplement
 recommendation calculation or physiological-age estimate.
 
+Four selectable example tiles sit within the results card, immediately above
+life stage. The selected tile uses the wine highlight and a checkmark. The
+controls support keyboard activation and stay still while the result changes;
+switching examples does not interrupt a playing video. Reduced motion is respected.
+
 Feline age bands come from the 2021 AAHA/AAFP guidelines linked on the page.
 Month-level implementation: Kitten 0–11 months, Young adult 12–83, Mature adult
 84–120, Senior 121 onward. Result wording and boundary interpretation are draft
