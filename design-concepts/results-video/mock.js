@@ -4,18 +4,36 @@ const video = document.querySelector('#thank-you-video');
 const play = document.querySelector('#play-video');
 const status = document.querySelector('#video-status');
 const tabs = [...document.querySelectorAll('[role=tab]')];
+const catExample = document.querySelector('#cat-example');
+const feline = globalThis.FelineLifeStage;
+const catSamples = {
+  kitten: { name: 'Miso', years: 0, months: 8 },
+  young: { name: 'Cleo', years: 3, months: 0 },
+  mature: { name: 'Luna', years: 8, months: 0 },
+  senior: { name: 'Olive', years: 12, months: 0 },
+};
 const profiles = {
   dog: { name: 'Buddy', breed: 'Golden Retriever', species: 'Dog', age: '4 years', weight: '28 kg' },
   cat: { name: 'Cleo', breed: 'Domestic Shorthair', species: 'Cat', age: '3 years', weight: '4 kg' },
 };
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 let panelAnimation;
+let activeSpecies;
 function selectSpecies(species, animate = true) {
+  activeSpecies = species;
   video.pause(); // Never leave the previous message playing behind another pet.
   try { video.currentTime = 0; } catch (_) { /* Metadata may not be loaded yet. */ }
   play.hidden = false;
   status.textContent = '';
-  const pet = profiles[species];
+  const sample = catSamples[catExample.value] || catSamples.young;
+  const pet = species === 'cat'
+    ? { ...profiles.cat, ...sample, age: feline.formatAge(sample.years, sample.months) }
+    : profiles.dog;
+  // These are fictional layout examples, not a calculator connected to the quiz.
+  const result = species === 'cat' ? feline.classify(pet.years, pet.months) : null;
+  document.querySelector('#cat-example-control').hidden = species !== 'cat';
+  document.querySelector('#life-stage-card').hidden = !result;
+  document.querySelector('#dog-stage-note').hidden = species !== 'dog';
   const both = household.value === 'both';
   document.querySelector('.species-tabs').hidden = !both;
   const panel = document.querySelector('#video-panel');
@@ -27,7 +45,7 @@ function selectSpecies(species, animate = true) {
     tab.tabIndex = selected ? 0 : -1;
   }
   const text = (id, value) => { document.getElementById(id).textContent = value; };
-  text('intro-copy', both ? 'Buddy and Cleo’s profiles are complete. A little guidance for each of them.' : `${pet.name}’s profile is complete. Here’s what comes next.`);
+  text('intro-copy', both ? `Buddy and ${sample.name}’s profiles are complete. A little guidance for each of them.` : `${pet.name}’s profile is complete. Here’s what comes next.`);
   text('audience', `For ${pet.name}’s ${species} parent`);
   text('profile-heading', `Meet ${pet.name}.`);
   text('profile-subtitle', `${pet.breed} · ${pet.species}`);
@@ -35,7 +53,15 @@ function selectSpecies(species, animate = true) {
   text('pet-weight', pet.weight);
   text('review-name', pet.name);
   text('review-species', pet.species);
+  text('review-age', pet.age);
   text('review-breed', pet.breed);
+  if (result) {
+    const stage = feline.stages.find(item => item.id === result.stage);
+    text('life-stage-label', stage.label);
+    text('life-stage-description', stage.description);
+    for (const item of feline.stages) document.getElementById(`stage-${item.id}`)
+      .setAttribute('aria-current', item.id === result.stage ? 'step' : 'false');
+  }
   document.getElementById('pet-art').src = `./${species}.png`;
   panelAnimation?.cancel();
   if (animate && !reduced()) panelAnimation = document.querySelector('.profile-card').animate(
@@ -44,6 +70,7 @@ function selectSpecies(species, animate = true) {
   );
 }
 household.addEventListener('change', () => selectSpecies(household.value === 'cat' ? 'cat' : 'dog'));
+catExample.addEventListener('change', () => selectSpecies(activeSpecies));
 for (const tab of tabs) {
   tab.addEventListener('click', () => selectSpecies(tab.dataset.species));
   tab.addEventListener('keydown', event => {
@@ -94,4 +121,4 @@ summary.addEventListener('click', event => {
     disclosureAnimation = null;
   };
 });
-selectSpecies('dog', false);
+selectSpecies('cat', false);

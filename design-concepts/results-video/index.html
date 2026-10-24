@@ -3,23 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>House of Tails · Results & thank-you concept</title>
+  <title>House of Tails · Life stage, results & thank-you</title>
   <link rel="stylesheet" href="./mock.css">
+  <script src="./life-stage.js" defer></script>
   <script src="./mock.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#results">Skip to results</a>
   <div class="preview-bar"><span>Design concept · sample profiles · nothing is saved</span>
-    <label>Preview household <select id="household"><option value="dog">Dog</option><option value="cat">Cat</option><option value="both">Dog & cat</option></select></label>
+    <div class="preview-controls"><label>Preview household <select id="household"><option value="dog">Dog</option><option value="cat" selected>Cat</option><option value="both">Dog & cat</option></select></label>
+    <label id="cat-example-control">Cat example <select id="cat-example"><option value="kitten">Miso · 8 months</option><option value="young" selected>Cleo · 3 years</option><option value="mature">Luna · 8 years</option><option value="senior">Olive · 12 years</option></select></label></div>
   </div>
   <header class="masthead"><span>For the long run</span><img src="./wordmark.png" width="5491" height="1160" alt="House of Tails"><span>A little closer to understanding them</span></header>
   <main id="results">
-    <div class="intro"><span class="eyebrow"><span aria-hidden="true">✓</span> A little more understood</span><h1>A good start to their<br><em>long run.</em></h1><p id="intro-copy">Buddy’s profile is complete. Here’s what comes next.</p></div>
+    <div class="intro"><span class="eyebrow"><span aria-hidden="true">✓</span> A little more understood</span><h1>A good start to their<br><em>long run.</em></h1><p id="intro-copy">Cleo’s profile is complete. Here’s what comes next.</p></div>
     <div class="results-layout">
       <aside class="video-card" aria-labelledby="video-heading">
         <div class="section-label">A personal note</div>
         <h2 id="video-heading">Thank you,<br>from Dr. Loenser</h2>
-        <p id="audience">For Buddy’s dog parent</p>
+        <p id="audience">For Cleo’s cat parent</p>
         <div class="species-tabs" role="tablist" aria-label="Choose a thank-you message" hidden>
           <button type="button" role="tab" id="tab-dog" aria-controls="video-panel" aria-selected="true" tabindex="0" data-species="dog">For dog parents</button>
           <button type="button" role="tab" id="tab-cat" aria-controls="video-panel" aria-selected="false" tabindex="-1" data-species="cat">For cat parents</button>
@@ -36,10 +38,21 @@
         <p class="watch-note">Watch whenever you like. Your results are already here.</p>
       </aside>
       <section class="profile-card" aria-labelledby="profile-heading">
-        <div class="profile-top"><div><span class="section-label">Their little story</span><h2 id="profile-heading">Meet Buddy.</h2><p id="profile-subtitle">Golden Retriever · Dog</p></div><div class="pet-art"><img id="pet-art" src="./dog.png" alt="" width="110" height="110"></div></div>
-        <dl class="profile-facts"><div><dt>Age</dt><dd id="pet-age">4 years</dd></div><div><dt>Weight</dt><dd id="pet-weight">28 kg</dd></div><div><dt>Profile</dt><dd><span class="complete-dot" aria-hidden="true"></span>Complete</dd></div></dl>
+        <div class="profile-top"><div><span class="section-label">Their little story</span><h2 id="profile-heading">Meet Cleo.</h2><p id="profile-subtitle">Domestic Shorthair · Cat</p></div><div class="pet-art"><img id="pet-art" src="./cat.png" alt="" width="110" height="110"></div></div>
+        <dl class="profile-facts"><div><dt>Age</dt><dd id="pet-age">3 years</dd></div><div><dt>Weight</dt><dd id="pet-weight">4 kg</dd></div><div><dt>Profile</dt><dd><span class="complete-dot" aria-hidden="true"></span>Complete</dd></div></dl>
+        <section class="life-stage-card" id="life-stage-card" aria-labelledby="life-stage-heading">
+          <div class="section-label">Their chapter of life</div>
+          <h3 id="life-stage-heading">Life stage: <span id="life-stage-label" role="status" aria-live="polite" aria-atomic="true">Young adult</span></h3>
+          <p id="life-stage-description">An adult chapter, with routines that can grow around your cat’s individual needs.</p>
+          <ol class="life-stage-trail" aria-label="Cat life stages">
+            <li id="stage-kitten">Kitten</li><li id="stage-young" aria-current="step">Young adult</li><li id="stage-mature">Mature adult</li><li id="stage-senior">Senior</li>
+          </ol>
+          <p class="life-stage-note">Based on their age and the 2021 AAHA/AAFP feline guidelines. Life stage is not a biological-age test or a prediction of lifespan.</p>
+          <a class="source-link" href="https://www.aaha.org/wp-content/uploads/2021/02/2021-aaha-aafp-feline-life-stage-guidelines.pdf" target="_blank" rel="noopener noreferrer">Read the feline life-stage guidelines <span class="sr-only">(PDF, opens in a new tab)</span></a>
+        </section>
+        <p id="dog-stage-note" class="dog-stage-note" hidden>Dog life-stage results will be added once the breed-based approach is confirmed.</p>
         <div class="result-preview"><div class="section-label">Your supplement preview</div><h3>A little guidance.<br>A longer journey.</h3><p>The quiz’s existing supplement result and its explanation would appear here, alongside this message.</p><p class="result-disclaimer">Layout placeholder—not a calculated recommendation. This concept does not change the recommendation engine or estimate physiological age.</p></div>
-        <details id="answer-review"><summary><span aria-hidden="true">✎</span> Review their answers <span class="chevron" aria-hidden="true">⌄</span></summary><div class="review-inner"><dl><div><dt>Name</dt><dd id="review-name">Buddy</dd></div><div><dt>Species</dt><dd id="review-species">Dog</dd></div><div><dt>Breed</dt><dd id="review-breed">Golden Retriever</dd></div></dl><p>Sample answers for this design concept. Editing the real quiz is not connected.</p></div></details>
+        <details id="answer-review"><summary><span aria-hidden="true">✎</span> Review their answers <span class="chevron" aria-hidden="true">⌄</span></summary><div class="review-inner"><dl><div><dt>Name</dt><dd id="review-name">Cleo</dd></div><div><dt>Species</dt><dd id="review-species">Cat</dd></div><div><dt>Age</dt><dd id="review-age">3 years</dd></div><div><dt>Breed</dt><dd id="review-breed">Domestic Shorthair</dd></div></dl><p>Sample answers for this design concept. Editing the real quiz is not connected.</p></div></details>
         <div class="profile-footer"><span aria-hidden="true">♡</span><p>One small step today.<br>More good days together.</p></div>
       </section>
     </div>
