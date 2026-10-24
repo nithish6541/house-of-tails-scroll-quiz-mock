@@ -40,5 +40,7 @@ This directory is a self-contained export of the approved local concept. Brand
 artwork is client-supplied. Bodoni Moda fonts are distributed with their SIL Open
 Font License in `bodoni-OFL.txt`. No live quiz settings or customer records are
 included. The existing scroll-quiz mock is unchanged.
-CSS/JS links include content-hash versions to prevent a refreshed page from
-mixing new markup with cached styles/scripts.
+The poster uses the user-selected, unaltered frame at 11 seconds of the reference
+clip (option A). The video itself is unchanged.
+CSS/JS and poster links include content-hash versions to prevent a refreshed
+page from mixing new markup with cached styles, scripts or thumbnails.
